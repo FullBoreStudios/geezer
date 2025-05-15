@@ -55,26 +55,62 @@ pip install geezer
 
 ## Usage
 
-### ✅ Basic
+### ✅ Basic logging
 ```python
-from geezer import prnt
+from geezer import log, warn, timer
 
-prnt("Fetching user info")
+log("Booting system", "⚙️", "startup")
 ```
 
-### 🎯 With emoji
+### ⚠️ Warnings
 ```python
-prnt("Loading cart", "🛒")
+warn("No config file found", "config check")
 ```
 
-### 🏷️ With emoji + label
+### 🏷️ Tags & Emojis
 ```python
-prnt("Card validated", "✅", "card check")
+log("Launching rockets", "🚀", "deployment")
+log("Inventory loaded", "📦", "warehouse")
+log("Shields down! Taking damage!", "💥", "defense")
+log("Poop scooped successfully", "💩", "can-doo")
 ```
 
-### 🔒 Always show (even in production)
+### ⏱️ Timed blocks
 ```python
-prnt("Email sent to customer", "✉️", "notification", "ok")
+with timer("checkout flow"):
+    run_checkout()
+```
+
+### 🧠 Log history
+```python
+from geezer import get_log_history
+
+for entry in get_log_history():
+    print(entry["timestamp"], entry["message"])
+```
+
+### 🤖 Auto-tagging
+```python
+import geezer.log
+geezer.log.auto_tagging = True
+
+log("Checkout complete")  # gets auto-tagged ✅
+log("Payment gateway choked")  # auto-tagged 🤮
+```
+
+---
+
+## More fun examples
+
+```python
+log("Connecting to mothership", "🛸", "api")
+log("New customer signed up", "🧍", "user event")
+log("Refresh token expired", "⏳", "auth")
+log("Cache hit for homepage", "🧠", "performance")
+log("Dark mode enabled", "🌚", "settings")
+log("New dog uploaded to gallery", "🐶", "media")
+log("Geezer initialized and logging like a pro", "🧓", "geezer-core")
+log("New deal created", "🛒", "deal")
 ```
 
 ---
@@ -82,11 +118,11 @@ prnt("Email sent to customer", "✉️", "notification", "ok")
 ## Output Example
 
 ```text
-[🛒 checkout] Starting checkout for user 42
-[✅ card validation] Card info validated
-[🔌 payment gateway] Calling Fortis API...
-[💰 payment] Transaction approved for $49.99
-[➡️ redirect] Redirecting to receipt page
+[🛒 checkout] Starting checkout for user 42  
+[✅ card validation] Card info validated  
+[🔌 payment gateway] Calling Fortis API...  
+[💰 payment] Transaction approved for $49.99  
+[➡️ redirect] Redirecting to receipt page  
 ```
 
 Styled with [rich](https://github.com/Textualize/rich) under the hood.
@@ -97,14 +133,11 @@ Styled with [rich](https://github.com/Textualize/rich) under the hood.
 
 ### 🟡 `warn()`
 ```python
-from geezer import warn
 warn("User has no saved card", "user check")
 ```
 
 ### ⏱️ `timer()`
 ```python
-from geezer import timer
-
 with timer("checkout process"):
     run_checkout()
 ```
@@ -127,7 +160,7 @@ geezer.log.auto_tagging = True
 
 Now this:
 ```python
-prnt("API call failed due to timeout")
+log("API call failed due to timeout")
 ```
 
 Becomes:
@@ -144,7 +177,7 @@ By default, `geezer` only prints in dev:
 DJANGO_DEBUG=True
 ```
 
-Or override manually with `ok`.
+Or override manually with `"ok"` as the last argument.
 
 ---
 
@@ -170,7 +203,7 @@ Geezer gives you raw, readable feedback — with zero setup, and max personality
 ---
 
 Pull up a chair.  
-Throw in a `prnt()`.  
+Throw in a `prnt()` or `log()`.  
 Talk to yourself a little.
 
 You earned it, geezer.
