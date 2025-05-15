@@ -8,7 +8,7 @@ Use `print()` with ✨ taste and purpose — with color, emoji, memory, and styl
 ---
 
 <p align="center">
-  <img src="logo.png" alt="Geezer Logo" style="max-height: 250px;">
+  <img src="logo.png" alt="Geezer Logo" height="250">
 </p>
 
 ---
