@@ -1,6 +1,6 @@
 # Geezer
 
-**Old-school logging for stylish devs.**  
+**Old-school logging for stylish Django devs.**  
 Use `print()` with ✨ taste and purpose — with color, emoji, memory, and style.
 
 [![PyPI version](https://badge.fury.io/py/geezer.svg)](https://pypi.org/project/geezer/)
