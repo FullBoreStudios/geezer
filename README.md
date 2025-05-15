@@ -127,6 +127,13 @@ log("New deal created", "🛒", "deal")
 
 Styled with [rich](https://github.com/Textualize/rich) under the hood.
 
+
+<p align="center">
+  <img src="screenshot.png" alt="Screen Shot">
+</p>
+
+
+
 ---
 
 ## ✨ Features
