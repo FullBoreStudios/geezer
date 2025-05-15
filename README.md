@@ -7,6 +7,10 @@ Use `print()` with ✨ taste and purpose — with color, emoji, memory, and styl
 
 ---
 
+![Geezer Logo](logo.png)
+
+---
+
 ## What is Geezer?
 
 Geezer is a tiny Python logging helper that makes print-style debugging stylish, readable, and safe for dev environments.
