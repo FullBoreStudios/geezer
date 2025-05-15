@@ -15,10 +15,17 @@ setup(
     packages=find_packages(),
     description='Old-school debug logging for stylish devs',
     author='Ben McNelly',
+    author_email='ben+geezer@fbstudios.com',
+    url='https://github.com/FullBoreStudios/geezer',
+    project_urls={
+        'Source': 'https://github.com/FullBoreStudios/geezer',
+        'Tracker': 'https://github.com/FullBoreStudios/geezer/issues',
+        'Documentation': 'https://github.com/FullBoreStudios/geezer#readme',
+    },
     include_package_data=True,
     zip_safe=False,
     install_requires=["rich"],
-    long_description = open("README.md", encoding="utf-8").read(),
+    long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     classifiers=[
         "Programming Language :: Python :: 3",

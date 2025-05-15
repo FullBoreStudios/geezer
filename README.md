@@ -21,6 +21,22 @@ It hides noise in production — unless you say otherwise.
 
 ---
 
+## 🖥️ Terminal Support
+
+Geezer looks best in terminals that support:
+
+- **UTF-8** (for emoji output)
+- **ANSI colors** (used by [`rich`](https://github.com/Textualize/rich))
+
+✅ Recommended:
+- Windows Terminal  
+- macOS Terminal or iTerm2  
+- Any modern Linux terminal  
+
+⚠️ *Note:* PyCharm's terminal or legacy consoles may not render colors or emojis properly. Use an external terminal for full effect.
+
+---
+
 ## Install
 
 ```bash
