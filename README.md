@@ -98,10 +98,18 @@ log("Poop scooped successfully", "💩", "can-doo")
 ```
 
 ### ⏱️ Timed blocks
+Measure how long something takes — perfect for debugging slow flows.
+
 ```python
 with timer("checkout flow"):
     run_checkout()
 ```
+
+🖥️ Output:
+```
+[⏱️ timing] checkout flow took 0.5832s
+```
+
 
 ### 🧠 Log history
 ```python
