@@ -1,17 +1,32 @@
+<table>
+<tr>
+<td>
+
 # Geezer
 
-**Old-school logging for stylish Django devs.**  
-Use `print()` with ✨ taste and purpose — with color, emoji, memory, and style.
+**Old-school logging for stylish Python devs.**  
+Built with Django in mind — but works anywhere `print()` does.
 
-[![PyPI version](https://badge.fury.io/py/geezer.svg)](https://pypi.org/project/geezer/)
+Use `print()` with ✨ taste and purpose — with color, emoji, and style.
 
----
-
-<p align="center">
-  <img src="logo.png" alt="Geezer Logo" height="250">
+<p>
+  <a href="https://pypi.org/project/geezer/"><img src="https://badge.fury.io/py/geezer.svg" alt="PyPI version"></a>
+  <img src="https://img.shields.io/pypi/pyversions/geezer.svg" alt="Python Versions">
+  <img src="https://img.shields.io/badge/status-stable-brightgreen.svg" alt="Status">
+  <img src="https://img.shields.io/badge/log-style%20matters-hotpink.svg" alt="Style">
 </p>
 
+</td>
+<td align="right" width="250">
+
+<img src="logo.png" alt="Geezer Logo" height="200"/>
+
+</td>
+</tr>
+</table>
+
 ---
+
 
 ## What is Geezer?
 
