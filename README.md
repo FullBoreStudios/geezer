@@ -62,6 +62,13 @@ from geezer import log, warn, timer
 log("Booting system", "⚙️", "startup")
 ```
 
+### ✅ Custom print / log name
+```python
+from geezer import log as prnt
+
+prnt("Loading NIBBLES.BAS", "🐍", "games")
+```
+
 ### ⚠️ Warnings
 ```python
 warn("No config file found", "config check")
