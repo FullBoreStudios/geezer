@@ -18,10 +18,11 @@ def prnt(message, *args):
     for arg in args:
         if arg is True or arg == "ok":
             show_anyway = True
-        elif isinstance(arg, str) and not emoji:
-            emoji = arg
         elif isinstance(arg, str):
-            label = arg
+            if not emoji and len(arg) <= 3:
+                emoji = arg
+            elif not label:
+                label = arg
 
     if auto_tagging and not emoji:
         emoji = auto_detect_emoji(message)
@@ -31,7 +32,7 @@ def prnt(message, *args):
 
     prefix = ""
     if emoji and label:
-        prefix = f"[{emoji} {label}] "
+        prefix = f"[{emoji}\u2002{label}] "
     elif emoji:
         prefix = f"[{emoji}] "
     elif label:
@@ -75,17 +76,39 @@ def is_debug():
 
 def auto_detect_emoji(message):
     lowered = message.lower()
-    if "error" in lowered or "fail" in lowered:
-        return "❌"
-    elif "payment" in lowered or "charged" in lowered:
-        return "💰"
-    elif "api" in lowered:
-        return "🔌"
-    elif "success" in lowered or "done" in lowered:
-        return "✅"
-    elif "load" in lowered or "cart" in lowered:
-        return "🛒"
-    return "🗒️"
+
+    keywords = {
+        ("error", "fail", "exception", "traceback", "bug"): "❌",
+        ("success", "done", "complete", "finished", "passed"): "✅",
+        ("payment", "charged", "transaction", "invoice", "billing"): "💰",
+        ("api", "request", "response", "endpoint"): "🔌",
+        ("load", "cart", "checkout", "order"): "🛒",
+        ("db", "database", "query", "sql"): "🧠",
+        ("user", "auth", "login", "signup", "register"): "🧍",
+        ("cache", "hit", "miss", "memo"): "⚡",
+        ("start", "boot", "init", "launch", "spawn"): "🚀",
+        ("stop", "shutdown", "terminate", "kill"): "🛑",
+        ("email", "mail", "inbox", "notify"): "📬",
+        ("file", "upload", "download", "save", "read"): "📁",
+        ("image", "photo", "gallery", "pic", "media"): "🖼",
+        ("server", "host", "port", "listen", "socket"): "🖥",
+        ("debug", "print", "trace", "check"): "🔍",
+        ("timeout", "latency", "delay"): "⏳",
+        ("retry", "reconnect", "attempt"): "🔁",
+        ("event", "webhook", "trigger"): "🎯",
+        ("config", "settings", "env", "var"): "⚙",
+        ("test", "unit", "spec", "assert"): "🧪",
+        ("deploy", "release", "version", "build"): "📦",
+        ("log", "history", "record"): "📜"
+    }
+
+    for keys, emoji in keywords.items():
+        if any(k in lowered for k in keys):
+            return emoji.replace("\ufe0f\ufe0f", "")
+
+    return "📄"  # fallback with clean spacing
+
+
 
 
 def choose_style(tag):
@@ -100,3 +123,8 @@ def choose_style(tag):
     if any(term in tag.lower() for term in ["timing"]):
         return "dim"
     return "white"
+
+
+def enable_auto_tagging():
+    global auto_tagging
+    auto_tagging = True
