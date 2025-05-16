@@ -232,10 +232,8 @@ Geezer gives you raw, readable feedback — with zero setup, and max personality
 - [x] Emoji + label tagging  
 - [x] In-memory log history  
 - [x] Auto emoji detection  
-- [ ] File logging  
-- [ ] Timestamp prefix toggle  
-- [ ] Custom output backends (file, webhook, etc)  
-- [ ] `geeze()` alias just for fun
+- [ ] Framework agnostic setting for when to show geezer prints in production or dev
+- [ ] Set custom / override auto emoji library
 
 ---
 
