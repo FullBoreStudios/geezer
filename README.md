@@ -97,18 +97,33 @@ log("Shields down! Taking damage!", "💥", "defense")
 log("Poop scooped successfully", "💩", "can-doo")
 ```
 
-### ⏱️ Timed blocks
-Measure how long something takes — perfect for debugging slow flows.
+## 📦 Dynamic Logging
+
+Just like `print()`, you can log variables — but you **must** use an f-string or string concatenation to include dynamic content.
+
+### ✅ Using f-strings
 
 ```python
-with timer("checkout flow"):
-    run_checkout()
+snake_count = 3
+log(f"User has {snake_count} snakes left", "🐍", "reptile-room")
 ```
 
-🖥️ Output:
+### ✅ Multiple variables
+
+```python
+user = "ben"
+count = 7
+log(f"{user} collected {count} tickets", "🎟️", "cinema")
 ```
-[⏱️ timing] checkout flow took 0.5832s
+
+### ❌ Don’t do this:
+
+```python
+log("User has", "🐍", snake_count)  # ❌ This won't work like you expect
 ```
+
+Use f-strings instead to keep it clean and readable.
+
 
 
 ### 🧠 Log history
