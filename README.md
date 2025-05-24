@@ -122,7 +122,6 @@ log(f"{user} collected {count} tickets", "🎟️", "cinema")
 log("User has", "🐍", snake_count)  # ❌ This won't work like you expect
 ```
 
-Use f-strings instead to keep it clean and readable.
 
 
 
