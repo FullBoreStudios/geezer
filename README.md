@@ -40,6 +40,8 @@ Perfect for:
 
 It hides noise in production — unless you say otherwise.
 
+*Note:* Geezer is purely a developer print helper, not a full logging framework. You won't find sinks, handlers, or JSON adapters here—just simple, explicit tools to help you track what your code is doing.
+
 ---
 
 ## 🖥️ Terminal Support
@@ -72,29 +74,29 @@ pip install geezer
 
 ### ✅ Basic logging
 ```python
-from geezer import log, warn, timer
+from geezer import log, warn
 
-log("Booting system", "⚙️", "startup")
+log("Booting system", emoji="⚙️", label="startup")
 ```
 
 ### ✅ Custom print / log name
 ```python
 from geezer import log as prnt
 
-prnt("Loading NIBBLES.BAS", "🐍", "games")
+prnt("Loading NIBBLES.BAS", emoji="🐍", label="games")
 ```
 
 ### ⚠️ Warnings
 ```python
-warn("No config file found", "config check")
+warn("No config file found", label="config check")
 ```
 
 ### 🏷️ Tags & Emojis
 ```python
-log("Launching rockets", "🚀", "deployment")
-log("Inventory loaded", "📦", "warehouse")
-log("Shields down! Taking damage!", "💥", "defense")
-log("Poop scooped successfully", "💩", "can-doo")
+log("Launching rockets", emoji="🚀", label="deployment")
+log("Inventory loaded", emoji="📦", label="warehouse")
+log("Shields down! Taking damage!", emoji="💥", label="defense")
+log("Poop scooped successfully", emoji="💩", label="can-doo")
 ```
 
 ## 📦 Dynamic Logging
@@ -105,7 +107,7 @@ Just like `print()`, you can log variables — but you **must** use an f-string 
 
 ```python
 snake_count = 3
-log(f"User has {snake_count} snakes left", "🐍", "reptile-room")
+log(f"User has {snake_count} snakes left", emoji="🐍", label="reptile-room")
 ```
 
 ### ✅ Multiple variables
@@ -113,48 +115,29 @@ log(f"User has {snake_count} snakes left", "🐍", "reptile-room")
 ```python
 user = "ben"
 count = 7
-log(f"{user} collected {count} tickets", "🎟️", "cinema")
+log(f"{user} collected {count} tickets", emoji="🎟️", label="cinema")
 ```
 
 ### ❌ Don’t do this:
 
 ```python
-log("User has", "🐍", snake_count)  # ❌ This won't work like you expect
+log("User has", emoji="🐍", label=snake_count)  # ❌ This won't work like you expect
 ```
 
-
-
-
-### 🧠 Log history
-```python
-from geezer import get_log_history
-
-for entry in get_log_history():
-    print(entry["timestamp"], entry["message"])
-```
-
-### 🤖 Auto-tagging
-```python
-import geezer.log
-geezer.log.auto_tagging = True
-
-log("Checkout complete")  # gets auto-tagged ✅
-log("Payment gateway choked")  # auto-tagged 🤮
-```
 
 ---
 
 ## More fun examples
 
 ```python
-log("Connecting to mothership", "🛸", "api")
-log("New customer signed up", "🧍", "user event")
-log("Refresh token expired", "⏳", "auth")
-log("Cache hit for homepage", "🧠", "performance")
-log("Dark mode enabled", "🌚", "settings")
-log("New dog uploaded to gallery", "🐶", "media")
-log("Geezer initialized and logging like a pro", "🧓", "geezer-core")
-log("New deal created", "🛒", "deal")
+log("Connecting to mothership", emoji="🛸", label="api")
+log("New customer signed up", emoji="🧍", label="user event")
+log("Refresh token expired", emoji="⏳", label="auth")
+log("Cache hit for homepage", emoji="🧠", label="performance")
+log("Dark mode enabled", emoji="🌚", label="settings")
+log("New dog uploaded to gallery", emoji="🐶", label="media")
+log("Geezer initialized and logging like a pro", emoji="🧓", label="geezer-core")
+log("New deal created", emoji="🛒", label="deal")
 ```
 
 ---
@@ -184,39 +167,7 @@ Styled with [rich](https://github.com/Textualize/rich) under the hood.
 
 ### 🟡 `warn()`
 ```python
-warn("User has no saved card", "user check")
-```
-
-### ⏱️ `timer()`
-```python
-with timer("checkout process"):
-    run_checkout()
-```
-
-### 🧠 Log history
-```python
-from geezer import get_log_history
-
-logs = get_log_history()
-for entry in logs:
-    print(entry["timestamp"], entry["message"])
-```
-
-### 🤖 Auto-emoji
-Enable auto-tagging:
-```python
-import geezer.log
-geezer.log.auto_tagging = True
-```
-
-Now this:
-```python
-log("API call failed due to timeout")
-```
-
-Becomes:
-```text
-[❌ error] API call failed due to timeout
+warn("User has no saved card", label="user check")
 ```
 
 ---
@@ -228,7 +179,7 @@ By default, `geezer` only prints in dev:
 DJANGO_DEBUG=True
 ```
 
-Or override manually with `"ok"` as the last argument.
+Or override manually using the `force=True` flag.
 
 ---
 
@@ -242,12 +193,9 @@ Geezer gives you raw, readable feedback — with zero setup, and max personality
 ## Roadmap
 
 - [x] Console styling with `rich`  
-- [x] Utility functions (`warn`, `timer`)  
+- [x] Utility functions (`warn`)
 - [x] Emoji + label tagging  
-- [x] In-memory log history  
-- [x] Auto emoji detection  
 - [ ] Framework agnostic setting for when to show geezer prints in production or dev
-- [ ] Set custom / override auto emoji library
 
 ---
 

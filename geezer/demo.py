@@ -1,27 +1,25 @@
-from geezer import log, enable_auto_tagging
-
-enable_auto_tagging()
+from geezer import log, warn
 
 
 def process_checkout(user_id, amount, card_info):
-    log(f"Starting checkout for user {user_id}", "checkout")
+    log(f"Starting checkout for user {user_id}", emoji="🛒", label="checkout")
 
     if not card_info.get("number"):
-        log("Missing card number", "card validation")
+        warn("Missing card number", label="card validation")
         return False
 
-    log("Card info validated", "card validation")
+    log("Card info validated", emoji="✅", label="card validation")
 
     # Simulate API call
-    log("Calling Fortis API...", "payment gateway")
+    log("Calling Fortis API...", emoji="🔌", label="payment gateway")
 
     success = True  # Simulate success/failure
     if success:
-        log(f"Transaction approved for ${amount}", "payment", "ok")
+        log(f"Transaction approved for ${amount}", emoji="💰", label="payment", force=True)
     else:
-        log("Transaction failed", "payment error")
+        log("Transaction failed", emoji="❌", label="payment error")
 
-    log("Redirecting to receipt page", "redirect")
+    log("Redirecting to receipt page", emoji="➡️", label="redirect")
     return True
 
 
