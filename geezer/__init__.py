@@ -1,9 +1,7 @@
-from .log import prnt as log, warn, timer, get_log_history, enable_auto_tagging
+from .log import prnt as log, prnt, warn
 
 __all__ = [
     "log",
+    "prnt",
     "warn",
-    "timer",
-    "get_log_history",
-    "enable_auto_tagging"
 ]

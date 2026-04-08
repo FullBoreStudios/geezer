@@ -1,3 +1,29 @@
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "geezer"
+dynamic = ["version"]
+description = "Old-school debug logging for stylish devs"
+readme = "README.md"
+requires-python = ">=3.6"
+authors = [
+    { name = "Ben McNelly", email = "ben+geezer@fbstudios.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "rich",
+]
+
+[project.urls]
+Source = "https://github.com/FullBoreStudios/geezer"
+Tracker = "https://github.com/FullBoreStudios/geezer/issues"
+Documentation = "https://github.com/FullBoreStudios/geezer#readme"
+
+[tool.setuptools.dynamic]
+version = { attr = "geezer.version.__version__" }
